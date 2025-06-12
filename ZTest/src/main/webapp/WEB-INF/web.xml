@@ -33,4 +33,15 @@
  <url-pattern>/web2</url-pattern>
  </servlet-mapping>
   
+  
+  <servlet>
+  <servlet-name>third</servlet-name>
+  <servlet-class>com.servlets.ThirdServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+ <servlet-name>third</servlet-name>
+ <url-pattern>/web3</url-pattern>
+ </servlet-mapping>
+  
 </web-app>
