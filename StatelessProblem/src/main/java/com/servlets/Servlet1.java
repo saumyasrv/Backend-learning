@@ -47,6 +47,7 @@ public class Servlet1 extends HttpServlet {
 		//c.setMaxAge(60 * 60);       // Optional: cookie will persist for 1 hour
 		response.addCookie(c);
 		System.out.println(">>> Cookie set: " + c.getName() + " = " + c.getValue()); // Debug log
+		//cookies are textual information which are stored in key value pair format to the client's browser during multiple requests.
 	}
 		
 	}

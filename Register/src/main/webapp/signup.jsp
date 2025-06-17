@@ -18,14 +18,25 @@
          <div class="card">
             <div class="card-content">
               <h3 style="margin-top: 10px;" class="center-align">Register Here!!</h3>
+              <h6 id="msg" class="center-align"></h6>
               
               <div class="form center-align">
                 <!-- Creating form -->
                 
-                <form action="register" method="post">
+                <form action="Register" method="post" id="myForm" enctype="multipart/form-data">
                   <input type="text" name="user_name" placeholder="Enter user name"/>
                   <input type="password" name="user_password" placeholder="Enter user password"/>
                   <input type="email" name="user_email" placeholder="Enter user email"/>
+                  
+                  <div class="file-field input-field">
+                      <div class="btn pink lighten-4">
+                          <span>File</span>
+                               <input name="image" type="file">
+                       </div>
+                       <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                       </div>
+                   </div>
                 
                   <button type="submit" class="btn pink lighten-4">Submit</button>
                 
@@ -62,6 +73,54 @@
   <script>
      $(document).ready(function() {
 console.log("page is ready..")
+
+$("#myForm").on('submit', function(event) {
+      event.preventDefault();
+      <!--var f = $(this).serialize();--><!--converting the object into a string of key value pair elements-->
+      <!--only text can be serialized, not images so we use FormData -->
+      
+        let f = new FormData(this); 
+      console.log(f);
+      
+      $(".loader").show();
+      $(".form").hide();
+      
+      
+      $.ajax({
+         url: "Register",
+         data: f,
+         type: 'POST',
+         success: function (data, textStatus, jqXHR) {
+			console.log(data);
+			console.log("success");
+			$(".loader").hide();
+		      $(".form").show();
+		      if (data.trim()==="done....") {
+                  $("#msg").html("Successfully Registered!!")
+                  $("#msg").addClass('green-text')
+       } else {
+                  
+           $("#msg").html("Something went wrong on server...!!")
+           $("#msg").addClass('red-text')
+
+       }
+		      
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.log(data);
+			console.log("error.");
+			$(".loader").hide();
+		      $(".form").show();
+		      $("#msg").html("Something went wrong on server...!!")
+              $("#msg").addClass('red-text')
+
+		      },
+		      processData: false,
+		      contentType: false
+		
+})
+})
+
 })
 
   </script>

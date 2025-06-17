@@ -20,10 +20,11 @@ public class Servlet2 extends HttpServlet {
 		response.setContentType("text/html");
 		
 		
-		//String name = request.getParameter("name");
+		//String name = request.getParameter("name"); this won't work here
 		
 		//getting all the cookies..
 		
+		//cookies return array
 		Cookie cookies[] = request.getCookies();
 		
 		
