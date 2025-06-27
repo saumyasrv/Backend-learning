@@ -11,6 +11,10 @@
 <body>
    <h1>Hello World!</h1>
   <t:mytag></t:mytag>
+  
+  <hr>
+  <t:printTableTag number = "23" color="red"></t:printTableTag>
+  <t:printTableTag number = "9" color="blue"></t:printTableTag>
    
 </body>
 </html>

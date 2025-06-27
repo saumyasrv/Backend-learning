@@ -13,11 +13,28 @@
         <name>mytag</name>
         <tag-class>tags.MyTagHandler</tag-class>
          <body-content>empty</body-content>
+         
+      
        <!-- <attribute>
             <name>message</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         --> 
+    </tag>
+    <tag>
+      <name>printTableTag</name>
+      <tag-class>tags.PrintTableTag</tag-class>
+               <body-content>empty</body-content>
+      
+      <attribute>
+         <name>number</name>
+         <required>true</required>
+      </attribute>
+      
+      <attribute>
+      <name>color</name>
+      <required>true</required>
+      </attribute>
     </tag>
 </taglib>
