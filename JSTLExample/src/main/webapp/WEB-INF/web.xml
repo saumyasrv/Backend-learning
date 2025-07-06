@@ -11,4 +11,16 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.xhtml</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+     <servlet-name>project</servlet-name>
+     <jsp-file>/show_users.jsp</jsp-file>  <!-- making search friendly clean url: removed '.jsp' from the search -->
+  </servlet>
+  
+  <servlet-mapping>
+      <servlet-name>project</servlet-name>
+      <url-pattern>/show_users</url-pattern>   
+      <url-pattern>/showusers</url-pattern> 
+  </servlet-mapping>
+  
 </web-app>
