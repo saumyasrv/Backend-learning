@@ -111,7 +111,7 @@
          console.log(data);
          $("#submit-btn").show();
          $("#loader").hide();
-         
+         //sweetalert
          if(data.trim()==='done!') {
 			         swal("Registered successfully.. we are redirecting to login page")
 			         .then((value) => {
