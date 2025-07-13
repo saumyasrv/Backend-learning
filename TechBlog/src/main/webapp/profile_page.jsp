@@ -90,42 +90,96 @@
 	             <br>
 	            <h5 class="modal-title mt-3" id="exampleModalLabel"><%= user.getName() %></h5>
 	             <!-- details --> 
+	             <div id="profile-details">
 	             <table class="table">
  
-  <tbody>
-    <tr>
-      <th scope="row">ID:</th>
-      <td><%= user.getId() %></td>
-      
-    </tr>
-    <tr>
-      <th scope="row">Email:</th>
-      <td><%= user.getEmail() %></td>
-      
-    </tr>
-    <tr>
-      <th scope="row">Gender:</th>
-      <td><%= user.getGender() %></td>
-     
-    </tr>
-    <tr>
-      <th scope="row">Status:</th>
-      <td><%= user.getAbout()%></td>
-     
-    </tr>
-    <tr>
-      <th scope="row">Registered on:</th>
-      <td><%= user.getRdate().toString()%></td>
-     
-    </tr>
-  </tbody>
-</table>
+					  <tbody>
+					    <tr>
+					      <th scope="row">ID:</th>
+					      <td><%= user.getId() %></td>
+					      
+					    </tr>
+					    <tr>
+					      <th scope="row">Email:</th>
+					      <td><%= user.getEmail() %></td>
+					      
+					    </tr>
+					    <tr>
+					      <th scope="row">Gender:</th>
+					      <td><%= user.getGender() %></td>
+					     
+					    </tr>
+					    <tr>
+					      <th scope="row">Status:</th>
+					      <td><%= user.getAbout()%></td>
+					     
+					    </tr>
+					    <tr>
+					      <th scope="row">Registered on:</th>
+					      <td><%= user.getRdate().toString()%></td>
+					     
+					    </tr>
+					  </tbody>
+					</table>
+				</div>
+				
+				
+				<!-- profile edit -->
+				<div id="profile-edit" style="display:none">
+				   <h3 class="mt-2">Please Edit Carefully</h3>
+				     <form action="EditServlet" method="post">
+				        <table class="table">
+				          <tr>
+				             <td>ID:</td>
+				             <td><%= user.getId() %></td>
+				          </tr>
+				          <tr>
+				             <td>Email:</td>
+				             <td><input type="email" class="form-control"name="user_email" value="<%= user.getEmail()%>"></td>
+				          </tr>
+				          <tr>
+				             <td>Name:</td>
+				             <td><input type="text" class="form-control"name="user_name" value="<%= user.getName()%>"></td>
+				          </tr>
+				          <tr>
+				             <td>Password:</td>
+				             <td><input type="password" class="form-control"name="user_password" value="<%= user.getPassword()%>"></td>
+				          </tr>
+				          
+				          <tr>
+					      <td>Gender:</td>
+					      <td><%= user.getGender().toUpperCase() %></td>
+					      
+					       <tr>
+				             <td>About:</td>
+				             <td>
+				               <textarea class="form-control" name="user_about" rows="3"><%= user.getAbout() %>
+				               </textarea>
+				             </td>
+				          </tr>
+				          
+					       <tr>
+				             <td>Profile Pic:</td>
+				             <td>
+				               <input type="file" name="profile_pic" class="form-control">
+				             </td>
+				          </tr>
+					     
+					    </tr>
+				        
+				        </table>
+				        <div class="container">
+				          <button type="submit" class="btn  primary-background text-white">Save</button>
+				        </div>
+				     </form>
+				</div>
+					
 	      </div>
                
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn  primary-background text-white">EDIT</button>
+        <button id="edit-profile-button" type="button" class="btn  primary-background text-white">EDIT</button>
       </div>
     </div>
   </div>
@@ -140,7 +194,35 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 
-
 <script src="js/myjs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+   $(document).ready(function() {
+      let editStatus = false;
+      
+	   
+	   
+       $("#edit-profile-button").click(function(){
+          
+           if(editStatus==false) {
+        	  $("#profile-details").hide()
+              $("#profile-edit").show()
+              editStatus=true;
+        	  $(this).text("Back");  //here 'this' is edit-profile-button
+           }
+           else {
+        	   $("#profile-details").show()
+               $("#profile-edit").hide()
+               editStatus=false;
+        	   $(this).text("EDIT");
+           }
+       })
+   }
+		   );
+ 
+</script>
+
+
+
 </body>
 </html>
